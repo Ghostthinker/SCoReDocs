@@ -1,0 +1,32 @@
+@import "variables.scss";
+
+.score {
+    &.color {
+        color: $score-primary !important;
+    }
+}
+
+.score-footer {
+    height: 3em;
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+
+
+    .footer-links {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 0.5em;
+        padding-top: 0.75em;
+
+        a {
+            color: $score-primary !important;
+        }
+    }
+
+}
+
+.v-application .py-4 {
+    padding-bottom: 0 !important;
+}
+

@@ -1,0 +1,157 @@
+<template>
+  <div class="sc-header" :style="{background: colors.header.bg, color: colors.header.text}">
+    <slot>
+      <img v-if="imageUrl" class="sc-header--img" :src="imageUrl" alt="" @click="toggleUserList"/>
+      <div v-if="!disableUserListToggle" class="sc-header--title ">
+        {{ title }}
+      </div>
+      <div v-else class="sc-header--title">{{ title }}</div>
+    </slot>
+    <v-tooltip v-model="showTooltip" top :open-delay="250">
+      <template v-slot:activator="{on, attrs}">
+        <div
+          v-show="showChangeContextButton"
+          class="sc-header--close-button"
+          v-bind="attrs"
+          v-on="on"
+          @click="toggleTooltip"
+        >
+          <v-icon color="white" large>mdi-swap-horizontal-bold</v-icon>
+        </div>
+      </template>
+      <span>{{ changeContextTooltip }}</span>
+    </v-tooltip>
+  </div>
+</template>
+
+<script>
+import CloseIcon from './assets/close-icon-big.png'
+
+export default {
+  props: {
+    icons: {
+      type: Object,
+      default: function () {
+        return {
+          close: {
+            img: CloseIcon,
+            name: 'default'
+          }
+        }
+      }
+    },
+    imageUrl: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    changeContext: {
+      type: Function,
+      required: true
+    },
+    changeContextTooltip: {
+      type: String,
+      required: false
+    },
+    colors: {
+      type: Object,
+      required: true
+    },
+    disableUserListToggle: {
+      type: Boolean,
+      default: false
+    },
+    showChangeContextButton: {
+      type: Boolean,
+      default: false
+    },
+  },
+  data() {
+    return {
+      inUserList: false,
+      showTooltip: false
+    }
+  },
+  methods: {
+    toggleUserList() {
+      this.inUserList = !this.inUserList
+      this.$emit('userList', this.inUserList)
+    },
+    toggleTooltip() {
+        this.changeContext()
+    }
+  },
+  watch: {
+    changeContextTooltip: function (newValue, oldValue) {
+        if (newValue !== oldValue) {
+            this.showTooltip = false;
+        }
+    }
+  }
+}
+</script>
+
+<style scoped>
+.sc-header {
+  min-height: 75px;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  padding: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.sc-header--img {
+  border-radius: 50%;
+  align-self: center;
+  padding: 10px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+}
+
+.sc-header--title {
+  align-self: center;
+  padding: 10px;
+  flex: 1;
+  user-select: none;
+  font-size: 20px;
+}
+
+.sc-header--title.enabled {
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.sc-header--title.enabled:hover {
+  box-shadow: 0px 2px 5px rgba(0.2, 0.2, 0.5, 0.1);
+}
+
+.sc-header--close-button {
+  width: 40px;
+  align-self: center;
+  margin-right: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: auto;
+}
+
+.sc-header--close-button img {
+  width: 100%;
+  height: 100%;
+  padding: 13px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 450px) {
+  .sc-header {
+    border-radius: 0px;
+  }
+}
+</style>

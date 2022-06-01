@@ -1,0 +1,59 @@
+/node_modules
+/public/hot
+/public/storage
+/public/js/app.js
+/public/css/app.css
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+### Laravel template
+/vendor/
+node_modules/
+
+# Laravel 4 specific
+bootstrap/compiled.php
+app/storage/
+
+# Laravel 5 & Lumen specific
+public/storage
+public/hot
+
+# Laravel 5 & Lumen specific with changed public path
+public_html/storage
+public_html/hot
+
+storage/*.key
+/.vagrant
+package-lock.json
+.idea/
+/public/images/chat-icon.svg
+/public/images/close.svg
+/public/images/close-icon.png
+/public/images/close-icon-big.png
+/public/images/file.svg
+/public/images/logo-no-bg.svg
+/public/assets/images/score-logo.png
+/laravel-echo-server.lock
+/laravel-echo-server.json
+/public/js/app.js.LICENSE.txt
+# Backups
+storage/
+!/storage/app
+
+# Eclipse
+/.project
+
+# gitpod
+gitpod/docker-php-ext-xdebug.ini
+
+#Changing files
+/public/mix-manifest.json
+public/assets/images/broken-image.svg
+public/assets/images/score_logo_icon_only.png
+/resources/js/bootstrap.local.js

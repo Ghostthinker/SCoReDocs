@@ -1,0 +1,45 @@
+image:
+  file: .gitpod.Dockerfile
+
+# List the ports you want to expose and what to do when they are served. See https://www.gitpod.io/docs/config-ports/
+ports:
+  - port: 7201
+    onOpen: open-browser
+    visibility: private
+  - port: 7202-9000
+    onOpen: ignore
+    visibility: private
+  - port: 2222-6379
+    onOpen: ignore
+    visibility: private
+  - port: 9001
+    onOpen: ignore
+    visibility: public
+
+
+# List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/config-start-tasks/
+tasks:
+  - name: setup
+    init: bash ./gitpod/init.sh 
+    command: cd ./environment/ && docker-compose up
+
+    # to have its own terminal, npm is run from here, to guarantee its depencies are installed up to this moment, they're also installed from here
+  - name: npm install/run
+    openMode: split-right
+    command: echo 'Waiting for webserver container to start...' &&
+     until docker ps | grep -q "webserver"; do sleep 1; done &&
+     docker exec -it $(docker ps | grep "webserver" | awk '{ print $1 }') 
+     bash -c "cd /var/www/laravel && npm install && npm run watch"
+
+  - name: prepare webserver
+    openMode: split-right  
+    init: echo 'Waiting for webserver container to start...' &&
+     until docker ps | grep -q "webserver"; do sleep 1; done &&
+     docker exec -it $(docker ps | grep "webserver" | awk '{ print $1 }') 
+     bash -c "/var/www/laravel/scripts/init_gitpod.sh"
+
+
+
+vscode:
+  extensions:
+    - felixfbecker.php-debug@1.13.0:WX8Y3EpQk3zgahy41yJtNQ==

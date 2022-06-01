@@ -1,0 +1,29 @@
+// Chrome, Edge, Safari
+::-webkit-scrollbar {
+    width: 1em;                                  /* width of the entire scrollbar */
+    height: 1em;
+    overflow: visible;
+}
+
+::-webkit-scrollbar-track {
+    background: none;                               /* color of the tracking area */
+    opacity: 1;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: lightgrey !important;    /* color of the scroll thumb */
+    border-radius: 20px;                            /* roundness of the scroll thumb */
+    border: 3px solid transparent;                  /* creates padding around scroll thumb */
+    box-sizing: border-box;                         /* makes padding around scroll thumb transparent */
+    background-clip: content-box;                   /* makes padding around scroll thumb transparent */
+    min-height: 4em;
+}
+
+// Firefox
+* {
+    scrollbar-width: thin;          /* "auto" or "thin" */
+    scrollbar-color: lightgrey transparent !important;   /* scroll thumb and track */
+}
+
+

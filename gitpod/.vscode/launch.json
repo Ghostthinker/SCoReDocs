@@ -1,0 +1,23 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Listen for Xdebug on Webserver",
+      "type": "php",
+      "request": "launch",
+      "port": 9001,
+      "pathMappings": {
+        "/var/www/laravel": "${workspaceFolder}/environment/web/"
+      }
+    },
+    {
+      "type": "php",
+      "name": "Launch",
+      "request": "launch",
+      "stopOnEntry": true,
+      "program": "${file}",
+      "cwd": "${workspaceRoot}",
+      "externalConsole": false
+    }
+  ]
+}

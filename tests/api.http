@@ -1,0 +1,14 @@
+GET http://localhost:7201/rest/file
+Accept: application/json
+
+###
+
+PUT http://localhost:7201/rest/file/12
+Accept: application/json
+
+{
+  "caption": "rest",
+  "meta": "metastring"
+}
+
+###

@@ -1,0 +1,47 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Vuetify
+@import '~vuetify/dist/vuetify.min.css';
+
+// Flex styles
+@import 'flex.scss';
+
+// Scrollbar style
+@import "scrollbar.scss";
+
+@import "elements";
+
+html {
+    overflow-y: hidden;
+}
+
+.js-cookie-consent {
+    position: fixed;
+    bottom: 0;
+    padding: 0.25em;
+    text-align: center;
+    width: 100%;
+    z-index: 9999;
+    background-color: white;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.js-cookie-consent-agree {
+    padding: 0.5em;
+    margin-left: 1em;
+    background-color: $score-primary;
+    color: white;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+}
+
+.js-cookie-consent-agree:hover {
+    background-color: lighten($score-primary, 10%);
+}

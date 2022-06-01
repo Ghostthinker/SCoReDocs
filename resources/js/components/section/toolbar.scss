@@ -1,0 +1,46 @@
+.toolbar {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.22);
+}
+
+.toolbar-button.v-btn {
+    min-width: 45px;
+    padding: 5px;
+}
+
+.close-button {
+    border-bottom: 1px solid rgba(0, 0, 0, .54);
+}
+
+.toolbar-icon {
+    color: rgba(0, 0, 0, .54) !important;
+}
+
+.button-Container {
+    flex-direction: column;
+    display: flex;
+}
+
+.sc-new-messsages-count {
+    position: absolute;
+    top: -10px;
+    left: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    background: #ff4646;
+    color: white;
+    text-align: center;
+    margin: auto;
+    font-weight: 500;
+    z-index: 10;
+}
+
+.locked-indicator {
+    font-size: 2rem !important;
+    box-shadow: none;
+    padding: 5px;
+}
